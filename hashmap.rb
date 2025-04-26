@@ -1,8 +1,11 @@
 # HashMap data structure for matching key/value pairs
 class HashMap
+  attr_accessor :load_factor, :capacity, :buckets
+
   def initialize
     @load_factor = 0.8
     @capacity = 16
+    @buckets = Array.new(capacity)
   end
 
   def hash(key)

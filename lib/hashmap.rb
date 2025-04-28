@@ -1,4 +1,5 @@
 require_relative "node"
+require_relative "linked_list"
 
 # HashMap data structure for matching key/value pairs
 class HashMap

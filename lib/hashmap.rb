@@ -12,11 +12,9 @@ class HashMap
   end
 
   def set(key, value)
-    index = hash(key) % capacity
-    # Prevent Ruby from dynamically resizing the buckets array
-    raise IndexError if index.negative? || index >= @buckets.length
-
+    index = key_to_index(key)
     bucket = buckets[index]
+
     if bucket.nil?
       list = LinkedList.new
       list.append(key, value)
@@ -41,5 +39,13 @@ class HashMap
     key.each_char { |char| hash_code = (prime_number * hash_code) + char.ord }
 
     hash_code
+  end
+
+  def key_to_index(key)
+    index = hash(key) % capacity
+    # Prevent Ruby from dynamically resizing the buckets array
+    raise IndexError if index.negative? || index >= @buckets.length
+
+    index
   end
 end

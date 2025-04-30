@@ -43,7 +43,7 @@ class LinkedList
     self.size -= 1
   end
 
-  def contains_key?(key)
+  def contains?(key)
     temp = head
     until temp.nil?
       return true if temp.key == key
@@ -53,7 +53,7 @@ class LinkedList
     false
   end
 
-  def find_key(key)
+  def find(key)
     temp = head
     index = 0
     until temp.nil?

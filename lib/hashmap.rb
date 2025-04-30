@@ -19,8 +19,8 @@ class HashMap
       list = LinkedList.new
       list.append(key, value)
       buckets[index] = list
-    elsif bucket.contains_key?(key)
-      bucket.at(bucket.find_key(key)).value = value
+    elsif bucket.contains?(key)
+      bucket.at(bucket.find(key)).value = value
     else
       # Bucket wasn't empty or key already-existing; collision case
       bucket.append(key, value)

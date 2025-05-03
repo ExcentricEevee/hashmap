@@ -18,8 +18,6 @@ test.buckets.each do |bucket|
   puts bucket
 end
 
-gets
-
-p test.get("carrot")
-p test.get("hat")
-p test.get("dog")
+p test.has?("ice cream")
+p test.has?("frozen yogurt")
+p test.has?("kite")

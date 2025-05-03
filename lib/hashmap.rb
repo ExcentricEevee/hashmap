@@ -34,6 +34,14 @@ class HashMap
     bucket.contains?(key) ? bucket.at(bucket.find(key)).value : nil
   end
 
+  def has?(key)
+    index = key_to_index(key)
+    bucket = buckets[index]
+    return false if bucket.nil?
+
+    bucket.contains?(key)
+  end
+
   private
 
   attr_reader :load_factor

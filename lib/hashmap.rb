@@ -42,6 +42,16 @@ class HashMap
     bucket.contains?(key)
   end
 
+  def remove(key)
+    index = key_to_index(key)
+    bucket = buckets[index]
+    return nil if bucket.nil?
+
+    if bucket.size == 1
+      
+    end
+  end
+
   private
 
   attr_reader :load_factor

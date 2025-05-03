@@ -36,10 +36,16 @@ class LinkedList
   end
 
   def pop
-    temp = head
-    temp = temp.next_node until temp.next_node == tail
-    temp.next_node = nil
-    self.tail = temp
+    if size == 1
+      self.head = nil
+      self.tail = nil
+    else
+      temp = head
+      temp = temp.next_node until temp.next_node == tail
+      temp.next_node = nil
+      self.tail = temp
+    end
+
     self.size -= 1
   end
 

@@ -27,6 +27,13 @@ class HashMap
     end
   end
 
+  def get(key)
+    index = key_to_index(key)
+    bucket = buckets[index]
+
+    bucket.contains?(key) ? bucket.at(bucket.find(key)).value : nil
+  end
+
   private
 
   attr_reader :load_factor

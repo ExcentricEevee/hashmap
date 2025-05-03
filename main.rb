@@ -17,3 +17,9 @@ test.set('lion', 'golden')
 test.buckets.each do |bucket|
   puts bucket
 end
+
+gets
+
+p test.get("carrot")
+p test.get("hat")
+p test.get("dog")

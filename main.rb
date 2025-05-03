@@ -18,6 +18,13 @@ test.buckets.each do |bucket|
   puts bucket
 end
 
-p test.has?("ice cream")
-p test.has?("frozen yogurt")
-p test.has?("kite")
+print "Press [Enter]"
+gets
+
+p test.remove("frog")
+p test.remove("frozen yogurt")
+p test.remove("hat")
+
+test.buckets.each do |bucket|
+  puts bucket
+end

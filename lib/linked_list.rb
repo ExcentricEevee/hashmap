@@ -4,7 +4,7 @@ require_relative "node"
 # List of nodes that contain data and references each other
 # Pros: insertion/deletion is quick. Cons: lookup is slower
 class LinkedList
-  attr_reader :head, :tail, :size
+  attr_accessor :head, :tail, :size
 
   def initialize
     @head = nil
@@ -84,5 +84,5 @@ class LinkedList
 
   private
 
-  attr_writer :head, :tail, :size
+  # attr_writer :head, :tail, :size
 end

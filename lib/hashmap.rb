@@ -45,11 +45,23 @@ class HashMap
   def remove(key)
     index = key_to_index(key)
     bucket = buckets[index]
-    return nil if bucket.nil?
+    return if bucket.nil?
 
+    value = bucket.at(bucket.find(key)).value
     if bucket.size == 1
-      
+      buckets[index] = nil
+    elsif bucket.at(bucket.find(key)) == bucket.tail
+      temp = bucket.head
+      temp = temp.next_node until temp.next_node == bucket.tail
+      temp.next_node = nil
+      bucket.tail = temp
+    else
+      temp = bucket.head
+      temp = temp.next_node until temp.next_node == bucket.at(bucket.find(key))
+      temp.next_node = temp.next_node.next_node
     end
+
+    value
   end
 
   private

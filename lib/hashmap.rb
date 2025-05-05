@@ -50,6 +50,12 @@ class HashMap
     bucket.remove_at(bucket.find(key))
   end
 
+  def length
+    buckets.reduce(0) do |total, bucket|
+      bucket.nil? ? total : total + bucket.size
+    end
+  end
+
   private
 
   attr_reader :load_factor

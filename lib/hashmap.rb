@@ -56,6 +56,10 @@ class HashMap
     end
   end
 
+  def clear
+    initialize
+  end
+
   private
 
   attr_reader :load_factor

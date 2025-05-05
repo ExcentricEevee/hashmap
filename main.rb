@@ -18,16 +18,10 @@ test.buckets.each do |bucket|
   puts bucket.nil? ? "nil" : bucket
 end
 
-p test.length
+print "\nPress [Enter]\n"
+gets
 
-# print "\nPress [Enter]\n"
-# gets
-
-# p "Removing frog: #{test.remove('frog')}"
-# p "Removing unassigned key frozen yogurt: #{test.remove('frozen yogurt')}"
-# p "Removing hat: #{test.remove('hat')}"
-# puts
-
-# test.buckets.each do |bucket|
-#   puts bucket.nil? ? "nil" : bucket
-# end
+test.clear
+test.buckets.each do |bucket|
+  puts bucket.nil? ? "nil" : bucket
+end

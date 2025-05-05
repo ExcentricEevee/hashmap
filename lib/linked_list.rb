@@ -72,6 +72,23 @@ class LinkedList
     nil
   end
 
+  def remove_at(index)
+    return if index.negative? || index >= size
+
+    if index.zero?
+      result = head
+      self.head = head.next_node
+    else
+      temp = head
+      (index - 1).times { temp = temp.next_node }
+      result = temp.next_node
+      temp.next_node = temp.next_node.next_node
+    end
+
+    # returns removed entry
+    result
+  end
+
   def to_s
     temp = head
     str = ""
@@ -81,8 +98,6 @@ class LinkedList
     end
     str << "nil"
   end
-
-  private
 
   # attr_writer :head, :tail, :size
 end

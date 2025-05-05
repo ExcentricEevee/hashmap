@@ -20,7 +20,7 @@ class HashMap
       list.append(key, value)
       buckets[index] = list
     elsif bucket.contains?(key)
-      bucket.at(bucket.find(key)).value = value
+      node.value = value
     else
       # Bucket wasn't empty or key already-existing; collision case
       bucket.append(key, value)
@@ -31,7 +31,7 @@ class HashMap
     index = key_to_index(key)
     bucket = buckets[index]
 
-    bucket.contains?(key) ? bucket.at(bucket.find(key)).value : nil
+    bucket.contains?(key) ? node.value : nil
   end
 
   def has?(key)
@@ -47,21 +47,7 @@ class HashMap
     bucket = buckets[index]
     return if bucket.nil?
 
-    value = bucket.at(bucket.find(key)).value
-    if bucket.size == 1
-      buckets[index] = nil
-    elsif bucket.at(bucket.find(key)) == bucket.tail
-      temp = bucket.head
-      temp = temp.next_node until temp.next_node == bucket.tail
-      temp.next_node = nil
-      bucket.tail = temp
-    else
-      temp = bucket.head
-      temp = temp.next_node until temp.next_node == bucket.at(bucket.find(key))
-      temp.next_node = temp.next_node.next_node
-    end
-
-    value
+    bucket.remove_at(bucket.find(key))
   end
 
   private

@@ -13,12 +13,17 @@ class HashMap
 
   def set(key, value)
     bucket = buckets[key_to_index(key)]
-    bucket.contains?(key) ? node.value = value : bucket.append(key, value)
+
+    if bucket.contains?(key)
+      bucket.at(bucket.find(key)).value = value
+    else
+      bucket.append(key, value)
+    end
   end
 
   def get(key)
     bucket = buckets[key_to_index(key)]
-    bucket.contains?(key) ? node.value : nil
+    bucket.contains?(key) ? bucket.at(bucket.find(key)).value : nil
   end
 
   def has?(key)

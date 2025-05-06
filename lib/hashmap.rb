@@ -64,6 +64,16 @@ class HashMap
     end
   end
 
+  def entries
+    buckets.each_with_object([]) do |bucket, entries|
+      temp = bucket.head
+      until temp.nil?
+        entries.push([temp.key, temp.value])
+        temp = temp.next_node
+      end
+    end
+  end
+
   private
 
   attr_reader :load_factor

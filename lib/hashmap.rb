@@ -8,52 +8,31 @@ class HashMap
   def initialize
     @load_factor = 0.8
     @capacity = 16
-    @buckets = Array.new(capacity)
+    @buckets = Array.new(capacity) { LinkedList.new }
   end
 
   def set(key, value)
-    index = key_to_index(key)
-    bucket = buckets[index]
-
-    if bucket.nil?
-      list = LinkedList.new
-      list.append(key, value)
-      buckets[index] = list
-    elsif bucket.contains?(key)
-      node.value = value
-    else
-      # Bucket wasn't empty or key already-existing; collision case
-      bucket.append(key, value)
-    end
+    bucket = buckets[key_to_index(key)]
+    bucket.contains?(key) ? node.value = value : bucket.append(key, value)
   end
 
   def get(key)
-    index = key_to_index(key)
-    bucket = buckets[index]
-
+    bucket = buckets[key_to_index(key)]
     bucket.contains?(key) ? node.value : nil
   end
 
   def has?(key)
-    index = key_to_index(key)
-    bucket = buckets[index]
-    return false if bucket.nil?
-
+    bucket = buckets[key_to_index(key)]
     bucket.contains?(key)
   end
 
   def remove(key)
-    index = key_to_index(key)
-    bucket = buckets[index]
-    return if bucket.nil?
-
+    bucket = buckets[key_to_index(key)]
     bucket.remove_at(bucket.find(key))
   end
 
   def length
-    buckets.reduce(0) do |total, bucket|
-      bucket.nil? ? total : total + bucket.size
-    end
+    buckets.reduce(0) { |total, bucket| total + bucket.size }
   end
 
   def clear

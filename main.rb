@@ -15,13 +15,30 @@ test.set("kite", "pink")
 test.set("lion", "golden")
 
 test.buckets.each do |bucket|
-  puts bucket.nil? ? "nil" : bucket
+  puts bucket
 end
+puts "# of keys: #{test.length}"
 
 print "\nPress [Enter]\n"
 gets
 
-test.clear
+# test.set("hat", "blue")
+# test.set("lion", "silver")
+
+test.buckets.each do |bucket|
+  puts bucket
+end
+puts "# of keys: #{test.length}"
+
+p test.has?("frog")
+p test.has?("frozen yogurt")
+
+p test.remove("frog")
+p test.remove("hat")
+p test.remove("frozen yogurt")
+
+puts
 test.buckets.each do |bucket|
   puts bucket.nil? ? "nil" : bucket
 end
+puts "# of keys: #{test.length}"

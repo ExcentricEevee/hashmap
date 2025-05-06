@@ -79,7 +79,7 @@ class LinkedList
   end
 
   def remove_at(index)
-    return if index.negative? || index >= size
+    return if index.nil? || index.negative? || index >= size
 
     if index.zero?
       result = head

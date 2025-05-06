@@ -22,4 +22,4 @@ puts "# of keys: #{test.length}"
 print "\nPress [Enter]\n"
 gets
 
-p test.keys
+p test.values

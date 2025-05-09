@@ -3,11 +3,9 @@ require_relative "linked_list"
 
 # HashMap data structure for matching key/value pairs
 class HashMap
-  # capacity is public for testing purposes
-  attr_reader :capacity, :buckets
+  LOAD_FACTOR = 0.75
 
   def initialize
-    @load_factor = 0.75
     @capacity = 16
     @buckets = Array.new(capacity) { LinkedList.new }
   end
@@ -21,7 +19,7 @@ class HashMap
       bucket.append(key, value)
     end
 
-    resize if length > (capacity * load_factor)
+    resize if length > (capacity * LOAD_FACTOR)
   end
 
   def get(key)
@@ -79,8 +77,7 @@ class HashMap
 
   private
 
-  attr_reader :load_factor
-  attr_writer :capacity, :buckets
+  attr_accessor :capacity, :buckets
 
   def hash(key)
     hash_code = 0

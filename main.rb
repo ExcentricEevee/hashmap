@@ -14,12 +14,32 @@ test.set("jacket", "blue")
 test.set("kite", "pink")
 test.set("lion", "golden")
 
-test.buckets.each do |bucket|
-  puts bucket
+test.buckets.each_with_index do |bucket, index|
+  puts "#{index}: #{bucket}"
 end
-puts "# of keys: #{test.length}"
+
+puts "Load Levels: #{test.length}"
+puts "Capacity: #{test.capacity}"
 
 print "\nPress [Enter]\n"
 gets
 
-p test.entries
+test.set("moon", "silver")
+
+test.buckets.each_with_index do |bucket, index|
+  puts "#{index}: #{bucket}"
+end
+
+puts "Load Levels: #{test.length}"
+puts "Capacity: #{test.capacity}"
+
+# test.set("dog", "grey")
+# test.set("kite", "cyan")
+# test.set("hat", "red")
+
+# test.buckets.each do |bucket|
+#   puts bucket
+# end
+
+# puts "Load Levels: #{test.length}"
+# puts "Capacity: #{test.capacity}"

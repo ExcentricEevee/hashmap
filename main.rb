@@ -33,6 +33,12 @@ end
 puts "Load Levels: #{test.length}"
 puts "Capacity: #{test.capacity}"
 
+test.clear
+
+test.buckets.each_with_index do |bucket, index|
+  puts "#{index}: #{bucket}"
+end
+
 # test.set("dog", "grey")
 # test.set("kite", "cyan")
 # test.set("hat", "red")

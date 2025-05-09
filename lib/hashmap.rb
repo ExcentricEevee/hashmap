@@ -44,7 +44,7 @@ class HashMap
   end
 
   def clear
-    initialize
+    self.buckets = Array.new(capacity) { LinkedList.new }
   end
 
   def keys
@@ -102,7 +102,7 @@ class HashMap
   def resize
     entry_list = entries
     self.capacity *= 2
-    self.buckets = Array.new(capacity) { LinkedList.new }
+    clear
 
     entry_list.each do |entry|
       set(entry[0], entry[1])
